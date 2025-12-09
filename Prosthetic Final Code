@@ -1,0 +1,79 @@
+
+  #include <Servo.h>  
+
+  #define SERVO_PIN 12  //pin for servo motor
+  #define HeatingPad 9 //heating pad pin
+  
+  #define tempval 350 // Variable for the temperature needed to activate the heating pad
+  Servo Gripper;   //servo for gripper
+  
+  int analogReadings;  //measured value for EMG
+  int analogReadings2;
+  int analogReadings3;
+  //-----------------------------------------------------------------------------------
+  //   Setup servo, inputs and outputs
+  // ----------------------------------------------------------------------------------
+  void setup(){
+    //init servo
+    Gripper.attach(SERVO_PIN); 
+    
+    Serial.begin(9600);                           
+    
+    pinMode(2, OUTPUT);
+    
+  }
+  // ----------------------------------------------------------------------------------
+  void loop()
+  { 
+    Gripper.write(0);
+    analogReadings = analogRead(A0); //read EMG value from analog input A0
+    //Serial.println(analogReadings);
+    //Serial.println(analogReadings); //for testing purposes 
+    analogReadings2 = analogRead(A2);
+    analogReadings3 = analogRead(A5);
+
+    Serial.println(analogReadings2);
+    delay(100);
+
+
+    if (analogReadings >= 100) { //gripper closing mechanism 
+      Serial.println("open"); 
+      Gripper.write(120);
+      delay(1500);
+    }
+    else{
+      Serial.println("closed");
+      Gripper.write(0);
+      delay(500);
+    }
+
+
+    if (analogReadings2 >= 20) { //vibration motor stuff
+      digitalWrite(7, HIGH);
+    }
+
+    else{
+      digitalWrite(7, LOW);
+    }
+    
+
+    if (analogReadings3 <= tempval) { //heating pad stuff
+      Serial.println("TEMPHIGH");
+      Serial.println(analogReadings3);
+      digitalWrite(HeatingPad, HIGH);
+      delay(2000);
+    }
+
+    else {
+      digitalWrite(HeatingPad, LOW);
+      Serial.println("TEMPLOW");
+      Serial.println(analogReadings3);
+      delay(250);
+    }
+
+
+
+
+  }
+
+
