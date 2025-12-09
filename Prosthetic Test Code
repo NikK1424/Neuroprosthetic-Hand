@@ -1,0 +1,74 @@
+#include <Servo.h>  
+
+#define SERVO_PIN 12  //pin for servo motor
+#define HeatingPad 14 //heating pad pin
+/*#define Thermistor1 36 //input
+#define Thermistor2 39 
+#define Thermistor3 33
+#define Thermistor4 25
+#define Thermistor5 26 */
+#define VibrationM1 34 //output
+#define VibrationM2 35
+#define Fan 18 //output
+/*#define Press1 27 //input
+#define Press2 13
+#define Press3 4
+#define Press4 2*/
+
+Servo Gripper;
+
+int therm1;
+int therm2;
+int therm3;
+int therm4;
+int therm5;
+int press1;
+int press2;
+int press3;
+int press4;
+
+int temperature_threshold = 100; //threshold for hot temperatures
+  
+
+
+void setup() {
+  // put your setup code here, to run once:
+  Gripper.attach(SERVO_PIN); 
+    
+  Serial.begin(9600);                           
+    
+  pinMode(12, OUTPUT); //servo
+  pinMode(14, OUTPUT); //heating pad
+  pinMode(34, OUTPUT); //vibrationmotor1
+  pinMode(35, OUTPUT); //vibrationmotor2
+  pinMode(18, OUTPUT); //fan
+
+}
+
+void loop() {
+  // put your main code here, to run repeatedly:
+  therm1 = analogRead(36);
+  therm2 = analogRead(39);
+  therm3 = analogRead(33);
+  therm4 = analogRead(25);
+  therm5 = analogRead(26);
+  press1 = analogRead(27);
+  press2 = analogRead(13);
+  press3 = analogRead(2);
+  press4 = analogRead(4);
+
+//---------------------------------------------------------------------------------------------------------
+// if block for temperature control over threshold for finger control
+  if (therm1 >= temperature_threshold || therm2 >= temperature_threshold || therm3 >= temperature_threshold || therm4 >= temperature_threshold) {
+    digitalWrite(14, HIGH);
+    delay(15000);
+    Serial.println("Prosthetic Detected Something HOT")
+  }
+
+  else {
+    digitalWrite(14, LOW);
+  }
+}
+//---------------------------------------------------------------------------------------------------------
+
+
