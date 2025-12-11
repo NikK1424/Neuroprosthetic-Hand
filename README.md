@@ -3,6 +3,6 @@ This is an image of the fully 3D printed prosthetic device with no electronics a
 
 
 ![IMG_2229](https://github.com/user-attachments/assets/c0e82d39-4177-41f4-b9f1-36bbad616aaf)
-This is an image of the electrodes placed on the surface of my arm, utilizing surface electromyography.
+This is an image of the designs I created for my servo motor for the prosthetic device.
 
 A low cost non invasive myo electric prothetic hand with somatosensory feedback for developing countries.
