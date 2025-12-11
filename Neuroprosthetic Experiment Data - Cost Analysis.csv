@@ -1,0 +1,12 @@
+Cost $,Part Name,,,Cost Per Part ($),Part Name,Quantity,Total Cost ($)
+42.50,MyoWare Muscle Sensor,,,0.95,Thermistor,1,0.95
+15.00,Arduino Uno,,,5.45,Electric Heating Pad,1,5.45
+10.00,Electrodes (Pack of 50),,,0.45,Vibration Motor,1,0.45
+6.90,Pressure Sensor,,,42.50,MyoWare Muscle Sensor,1,42.5
+5.45,Electric Heating Pad,,,10.0,Electrodes,1,10.0
+0.95,Thermistor,,,5.0,ESP 32 Module,1,5.0
+0.45,Vibration Motor (12.99 for 30),,,5.0,Electric Fan,1,5.0
+,,,,3.0,Voltage Regulator ,1,
+,,,,2.0,PCB,10,20.0
+,,,,,Miscellaneous/3D printing,~10,10.0
+Total $,81.25,,,Total ($),99.35,,
